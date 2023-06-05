@@ -6,10 +6,23 @@
   home.packages = [
     pkgs.fd
     pkgs.htop
+
+    # Haskell
+    pkgs.haskellPackages.cabal-install
+    pkgs.haskellPackages.haskell-language-server
+
     pkgs.ncdu
     pkgs.neofetch
     pkgs.nixfmt
+
+    # Javascript
+    pkgs.nodejs_18
+    pkgs.nodePackages.bash-language-server
+    pkgs.nodePackages.typescript-language-server
+    pkgs.nodePackages.vscode-json-languageserver-bin
+
     pkgs.rnix-lsp # nix lsp
+    pkgs.taplo # toml lsp
     pkgs.unzip
     pkgs.zip
   ];

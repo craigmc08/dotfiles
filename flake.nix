@@ -11,6 +11,10 @@
         url = "github:nix-community/NixOS-WSL";
         inputs.nixpkgs.follows = "nixpkgs";
     };
+    vscode-server = {
+      url = "github:nix-community/nixos-vscode-server";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = { home-manager, nixpkgs, ... }@inputs:

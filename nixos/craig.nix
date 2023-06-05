@@ -8,8 +8,12 @@
       useGlobalPkgs = true;
       useUserPackages = true;
       users.craig = { pkgs, ... }: {
-        imports = [ ../home ];
+        imports = [
+          ../home
+          inputs.vscode-server.nixosModules.home
+        ];
         home.stateVersion = "23.05";
+        services.vscode-server.enable = true;
       };
     };
 
