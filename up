@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+git pull origin main
+sudo nixos-rebuild switch --flake "$HOME/dotfiles"
