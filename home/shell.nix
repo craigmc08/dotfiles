@@ -1,5 +1,9 @@
 { lib, pkgs, config, inputs, ... }: {
   home.sessionVariables = {
+    # exa
+    TIME_STYLE = "iso";
+
+    # helix
     EDITOR = "hx";
   };
 
@@ -11,5 +15,10 @@
     plugins = [
       { name = "bobthefish"; src = pkgs.fishPlugins.bobthefish.src; }
     ];
+
+    functions = {
+      ll = "exa -aagl $argv";
+      lll = "exa -glT --level=2 $argv";
+    };
   };
 }

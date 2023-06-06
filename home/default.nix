@@ -4,6 +4,7 @@
   home.stateVersion = "23.05";
 
   home.packages = [
+    pkgs.exa
     pkgs.fd
     pkgs.htop
 
