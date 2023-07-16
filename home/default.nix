@@ -7,6 +7,7 @@
     pkgs.exa
     pkgs.fd
     pkgs.htop
+    pkgs.fzf
 
     # Haskell
     pkgs.haskellPackages.cabal-install
