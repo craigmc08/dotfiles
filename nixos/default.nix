@@ -14,6 +14,9 @@
       pkgs.nano
       pkgs.wget
     ];
+
+    # For direnv fish integration.
+    pathsToLink = [ "/share/fish" ];
   };
 
   nix = {
@@ -21,6 +24,10 @@
       allowed-users = [ "@wheel" ];
       auto-optimise-store = true;
       experimental-features = ["nix-command" "flakes" ];
+
+      # Protect direnv shells from GC.
+      keep-outputs = true;
+      keep-derivations = true;
     };
     gc = {
       automatic = true;
