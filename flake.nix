@@ -19,13 +19,20 @@
 
   outputs = { home-manager, nixpkgs, ... }@inputs:
     let specialArgs.inputs = inputs;
+
+        mkSystem = { system, hostname }:
+          nixpkgs.lib.nixosSystem {
+            inherit specialArgs;
+            system = system;
+            modules = [
+              { networking.hostName = hostname; }
+              (./. + "/hosts/${hostname}/hardware-configuration.nix")
+              (./. + "/hosts/${hostname}")
+            ];
+          };
     in {
       nixosConfigurations = {
-        kafka = nixpkgs.lib.nixosSystem {
-          inherit specialArgs;
-          system = "x86_64-linux";
-          modules = [ ./hosts/kafka ];
-        };
+        kafka = mkSystem { system = "x86_64-linux"; hostname = "kafka"; };
       };
     };
 }
