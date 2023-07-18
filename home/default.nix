@@ -37,6 +37,10 @@
       init.defaultBranch = "main";
       pull.rebase = true;
     };
+    ignores = [
+      ".env"
+      "__scripts"
+    ];
   };
 
   programs.helix = {
