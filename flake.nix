@@ -8,8 +8,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     NixOS-WSL = {
-        url = "github:nix-community/NixOS-WSL";
-        inputs.nixpkgs.follows = "nixpkgs";
+      url = "github:nix-community/NixOS-WSL";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
     vscode-server = {
       url = "github:nix-community/nixos-vscode-server";
@@ -18,21 +18,25 @@
   };
 
   outputs = { home-manager, nixpkgs, ... }@inputs:
-    let specialArgs.inputs = inputs;
+    let
+      specialArgs.inputs = inputs;
 
-        mkSystem = { system, hostname }:
-          nixpkgs.lib.nixosSystem {
-            inherit specialArgs;
-            system = system;
-            modules = [
-              { networking.hostName = hostname; }
-              (./. + "/hosts/${hostname}/hardware-configuration.nix")
-              (./. + "/hosts/${hostname}")
-            ];
-          };
+      mkSystem = { system, hostname }:
+        nixpkgs.lib.nixosSystem {
+          inherit specialArgs;
+          system = system;
+          modules = [
+            { networking.hostName = hostname; }
+            (./. + "/hosts/${hostname}/hardware-configuration.nix")
+            (./. + "/hosts/${hostname}")
+          ];
+        };
     in {
       nixosConfigurations = {
-        kafka = mkSystem { system = "x86_64-linux"; hostname = "kafka"; };
+        kafka = mkSystem {
+          system = "x86_64-linux";
+          hostname = "kafka";
+        };
       };
     };
 }
