@@ -47,6 +47,6 @@ origin remote and rebuild.
 
 ## thanks
 
-- Based on: https://github.com/forrestjacobs/dots
-- `flake.nix` `mkSystem` based on: https://github.com/notusknot/dotfiles-nix
+- https://github.com/forrestjacobs/dots
+- https://github.com/notusknot/dotfiles-nix
 
