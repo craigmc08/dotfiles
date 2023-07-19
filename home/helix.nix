@@ -9,7 +9,7 @@
         completion-trigger-len = 1;
         idle-timeout = 50;
         mouse = false;
-        rulers = [81 121];
+        rulers = [ 81 121 ];
         true-color = true;
         color-modes = true;
       };
@@ -35,17 +35,26 @@
         {
           name = "haskell";
           auto-format = true;
-          indent = { tab-width = 2; unit = "  "; };
+          indent = {
+            tab-width = 2;
+            unit = "  ";
+          };
         }
         {
           name = "python";
           auto-format = true;
-          indent = { tab-width = 4; unit = "    "; };
+          indent = {
+            tab-width = 4;
+            unit = "    ";
+          };
         }
         {
           name = "rust";
           auto-format = true;
-          indent = { tab-width = 2; unit = "  "; };
+          indent = {
+            tab-width = 2;
+            unit = "  ";
+          };
         }
       ];
     };

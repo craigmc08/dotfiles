@@ -1,9 +1,5 @@
 { lib, pkgs, config, inputs, ... }: {
-  imports = [
-    ./git.nix
-    ./helix.nix
-    ./shell.nix
-  ];
+  imports = [ ./git.nix ./helix.nix ./shell.nix ];
 
   home.stateVersion = "23.05";
 
@@ -25,4 +21,3 @@
   ];
 }
 
-  
