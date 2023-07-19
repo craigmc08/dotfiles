@@ -21,6 +21,7 @@ sudo nixos-generate-config
 
 ```sh
 mkdir hosts/<hostname>
+cp /etc/nixos/hardware-configuration.nix hosts/<hostname>/hardware-configuration.nix
 ```
 
 4. Make `hosts/<hostname>/default.nix` and import at least `../../nixos`. You can

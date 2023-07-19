@@ -31,11 +31,17 @@
             (./. + "/hosts/${hostname}")
           ];
         };
-    in {
+    in
+    {
       nixosConfigurations = {
         kafka = mkSystem {
           system = "x86_64-linux";
           hostname = "kafka";
+        };
+
+        blade = mkSystem {
+          system = "x86_64-linux";
+          hostname = "blade";
         };
       };
     };
