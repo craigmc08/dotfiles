@@ -68,6 +68,7 @@ in {
 					roboto
 					openmoji-color
 					fira-code
+					(nerdfonts.override { fonts = [ "FiraCode" ]; })
 				];
 
 				fontconfig = {
@@ -78,14 +79,15 @@ in {
 				};
 			};
 
-			# X11
-			services.xserver.enable = true;
-			
-			# Desktop manager
-			services.xserver.displayManager.lightdm.enable = true;
-			services.xserver.desktopManager.pantheon.enable = true;
+			# Hyprland
+			programs.hyprland = {
+				enable = true;
+			};
 
-			services.xserver.layout = "us";
+			# Networking
+			networking = {
+				networkmanager.enable = true;
+			};
 
 			# Sound.
 			sound.enable = true;

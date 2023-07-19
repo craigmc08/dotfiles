@@ -17,7 +17,7 @@ in {
 
 				colors = {
 					foreground = "e5ded6";
-					background = "162c23";
+					background = "161c23";
 
 					regular0 = "13181e"; # black
 					regular1 = "d32c4d"; # red

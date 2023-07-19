@@ -5,6 +5,7 @@
 	config.modules = {
 		firefox.enable = true;
 		foot.enable = true;
+		hyprland.enable = true;
 
 		helix.enable = true;
 		fish.enable = true;

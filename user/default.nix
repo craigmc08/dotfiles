@@ -4,6 +4,7 @@
     # gui
     ./firefox
     ./foot # terminal
+    ./hyprland # window manager styling/config
 
     # cli
     ./helix
