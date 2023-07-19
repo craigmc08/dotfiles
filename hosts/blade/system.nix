@@ -1,8 +1,8 @@
 { lib, pkgs, config, ... }: {
-	imports = [ ../../system ];
+  imports = [ ../../system ];
 
-	config.modules = {
-		system.enable = true;
-		system.hardware.enable = true;
-	};
+  config.modules = {
+    system.enable = true;
+    system.hardware.enable = true;
+  };
 }

@@ -4,26 +4,24 @@ with lib;
 let cfg = config.modules.fish;
 
 in {
-	options.modules.fish = { enable = mkEnableOption "fish"; };
+  options.modules.fish = { enable = mkEnableOption "fish"; };
 
-	config = mkIf cfg.enable {
-		home.sessionVariables = {
-			# exa
-			TIME_STYLE = "iso";
-		};
+  config = mkIf cfg.enable {
+    home.sessionVariables = {
+      # exa
+      TIME_STYLE = "iso";
+    };
 
-		programs.starship = { enable = true; };
+    programs.starship = { enable = true; };
 
-		programs.fish = {
-			enable = true;
-			interactiveShellInit = ''
-				set fish_greeting # Disable greeting
-			'';
+    programs.fish = {
+      enable = true;
+      interactiveShellInit = "	set fish_greeting # Disable greeting\n";
 
-			functions = {
-				ll = "exa --agl $argv";
-				lll = "exa -glT $argv";
-			};
-		};
-	};
+      functions = {
+        ll = "exa --agl $argv";
+        lll = "exa -glT $argv";
+      };
+    };
+  };
 }
