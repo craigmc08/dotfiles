@@ -47,7 +47,7 @@ in {
 			# User setup.
 			users.users.craig = {
 				isNormalUser = true;
-				extraGroups = [ "wheel" ];
+				extraGroups = [ "wheel" "networkmanager" ];
 			};
 		})
 		(mkIf cfg.hardware.enable {
@@ -78,17 +78,14 @@ in {
 				};
 			};
 
-		  # X11
-		  services.xserver.enable = true;
+			# X11
+			services.xserver.enable = true;
+			
+			# Desktop manager
+			services.xserver.displayManager.lightdm.enable = true;
+			services.xserver.desktopManager.pantheon.enable = true;
 
-		  # Pantheon
-		  services.xserver.displayManager.lightdm.enable = true;
-		  services.xserver.desktopManager.pantheon.enable = true;
-
-		  services.xserver = {
-		    layout = "us";
-		    xkbVariant = "";
-		  };
+			services.xserver.layout = "us";
 
 			# Sound.
 			sound.enable = true;

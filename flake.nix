@@ -6,6 +6,7 @@
       url = "github:nix-community/home-manager/release-23.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     NixOS-WSL = {
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -29,6 +30,7 @@
               home-manager = {
                 useGlobalPkgs = true;
                 useUserPackages = true;
+                extraSpecialArgs = { inherit inputs; };
                 users.craig = (./. + "/hosts/${hostname}/user.nix");
               };
             }

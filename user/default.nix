@@ -2,6 +2,8 @@
   home.stateVersion = "23.05";
   imports = [
     # gui
+    ./firefox
+    ./foot # terminal
 
     # cli
     ./helix
@@ -11,5 +13,6 @@
 
     # other
     ./packages
+    ./xdg
   ];
 }
