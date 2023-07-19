@@ -31,6 +31,14 @@ in {
       exec-once=foot --server
       exec-once=dust
 
+      input {
+        kb_layout = us
+        kb_variant =
+        kb_model =
+        kb_options = caps:escape
+        kb_rules =
+      }
+
       general {
       	gaps_in = 5
       	gaps_out = 20
@@ -90,6 +98,11 @@ in {
       bind = $mainMod,J,movefocus,d
       bind = $mainMod,K,movefocus,u
       bind = $mainMod,L,movefocus,r
+
+      bind = $mainMod SHIFT,H,swapwindow,l
+      bind = $mainMod SHIFT,J,swapwindow,d
+      bind = $mainMod SHIFT,K,swapwindow,u
+      bind = $mainMod SHIFT,L,swapwindow,r
 
       # Swap through workspaces with Super + F, B
       bind = $mainMod,F,workspace,e+1
