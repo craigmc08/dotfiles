@@ -6,8 +6,6 @@
     "${modulesPath}/profiles/minimal.nix"
   ];
 
-  networking.hostName = "kafka";
-
   wsl = {
     enable = true;
     defaultUser = "craig";

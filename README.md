@@ -1,16 +1,42 @@
 ## set up
 
-Create `hosts/<hostname>/default.nix` and import at least `../../nixos`. Use an
-existing host flake for inspiration.
+__Prerequisites:__
 
-Then, add it to `flake.nix` where the other hosts are listed.
+- [Nix flakes](https://nixos.wiki/wiki/flakes)
+- Root access
 
-Finally, run `./up`.
+1. Clone the repo
 
-To update configuration, just run `./up` again, which also pulls most recent
-version from origin.
+```sh
+git clone https://github.com/craigmc08/dotfiles ~/dotfiles && cd ~/dotfiles
+```
 
-To build, you must have flakes enabled and git installed.
+2. Create the hardware configuration for your system:
+
+```sh
+sudo nixos-generate-config
+```
+
+3. Copy into the hosts directory for the `<hostname>` you want your computer to have:
+
+```sh
+mkdir hosts/<hostname>
+```
+
+4. Make `hosts/<hostname>/default.nix` and import at least `../../nixos`. You can
+  also put system-specific configuration here. Use an existing host for inspiration!
+
+  - `kafka` runs in WSL.
+  - More coming soon!
+
+5. Add an entry to `nixosConfigurations` in `flake.nix` for your new host.
+
+6. `git add` the changed files.
+
+7. `./up` to build the system with the new configuration.
+
+Whenever you want to update your system, run `./up` to pull changes from the
+origin remote and rebuild.
 
 ## layout
 
@@ -20,5 +46,6 @@ To build, you must have flakes enabled and git installed.
 
 ## thanks
 
-Based off of https://github.com/forrestjacobs/dots.
+- Based on: https://github.com/forrestjacobs/dots
+- `flake.nix` `mkSystem` based on: https://github.com/notusknot/dotfiles-nix
 
