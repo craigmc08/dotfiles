@@ -49,5 +49,5 @@ origin remote and rebuild.
 
 - https://github.com/forrestjacobs/dots
 - https://github.com/notusknot/dotfiles-nix
-- desktop theme inspired by: https://github.com/flick0/dotfiles/blob/dreamy
+- EWW modules from https://github.com/fufexan/dotfiles/blob/main/home/programs/eww
 

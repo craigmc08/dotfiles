@@ -11,6 +11,9 @@
 (include "./modules/volume.yuck")
 (include "./modules/workspaces.yuck")
 
+; windows
+(include "./windows/system-menu.yuck")
+
 (defwindow bar
 	:monitor 0
 	:geometry (geometry :x "0%"
