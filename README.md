@@ -49,4 +49,5 @@ origin remote and rebuild.
 
 - https://github.com/forrestjacobs/dots
 - https://github.com/notusknot/dotfiles-nix
+- desktop theme inspired by: https://github.com/flick0/dotfiles/blob/dreamy
 
