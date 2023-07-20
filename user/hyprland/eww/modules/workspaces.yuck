@@ -1,0 +1,11 @@
+(defwidget workspaces []
+	(box
+		:class "module workspaces"
+		(for ws in {hyprland.workspaces}
+			(button
+				:onclick "hyprctl dispatch workspace ${ws.number}"
+				:class "ws icon"
+				:style "background-color: ${ws.color};"
+				(box
+					:class `${ws.focused ? "focused" : ""}`
+					:height 3)))))
