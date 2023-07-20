@@ -7,6 +7,8 @@ in {
   # hyprland is installed system-wide, so this doesn't need to install it
   # This module is just for configuration.
 
+  imports = [./eww];
+
   options.modules.hyprland = {
     enable = mkEnableOption "hyprland";
 
@@ -24,15 +26,6 @@ in {
 
     # dunst (notifications)
     services.dunst = { enable = true; };
-
-    # waybar (status bar)
-    programs.waybar = {
-      enable = true;
-      inherit (import ./waybar.nix {
-        inherit lib;
-        config = cfg;
-      }) settings style;
-    };
 
     # wofi (launcher/menu)
     programs.wofi = {
@@ -52,7 +45,7 @@ in {
       # TODO pick a wallpaper
       # swaybg -i $NIXOS_CONFIG_DIR/pics/wallpaper.png
       exec-once=foot --server
-      exec-once=waybar
+      exec-once=eww open bar
       exec-once=dunst
 
       input {
@@ -71,9 +64,9 @@ in {
         sensitivity = 1.0 # mouse cursor
         apply_sens_to_raw = 0 # do not apply sensitivity to raw mouse input mode
 
-      	gaps_in = 8
-      	gaps_out = 15
-      	border_size = 5
+      	gaps_in = 5
+      	gaps_out = 5
+      	border_size = 2
       	col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
       	col.inactive_border = rgba(595959aa)
 
@@ -83,16 +76,16 @@ in {
       decoration {
       	rounding = 15
 
-      	blur = 0
-      	blur_size = 1
+      	blur = true
+      	blur_size = 3
       	blur_passes = 1
       	blur_new_optimizations = true
 
       	drop_shadow = true
+        shadow_ignore_window = true
       	shadow_range = 100
       	shadow_render_power = 5
-      	col.shadow = rgba(000000ee)
-        col.shadow_inactive = rgba(00000022)
+      	col.shadow = rgba(00000099)
       }
 
       animations {
@@ -134,9 +127,14 @@ in {
       bind = $mainMod SHIFT,K,swapwindow,u
       bind = $mainMod SHIFT,L,swapwindow,r
 
-      # Swap through workspaces with Super + F, B
-      bind = $mainMod,F,workspace,e+1
-      bind = $mainMod,B,workspace,e-1
-      		'';
+      # Cycle through workspaces with Super + [ or ]
+      bind = $mainMod,bracketleft,workspace,e+1
+      bind = $mainMod,bracketright,workspace,e-1
+
+      # move windows with mouse (move = super + left, resize = super + right or super + alt + left)
+      bindm = $mainMod,mouse:272,movewindow
+      bindm = $mainMod,mouse:273,resizewindow
+      bindm = $mainMod ALT,mouse:272,resizewindow
+  		'';
   };
 }

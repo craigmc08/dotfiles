@@ -68,7 +68,8 @@ in {
           roboto
           openmoji-color
           fira-code
-          (nerdfonts.override { fonts = [ "FiraCode" ]; })
+          agave
+          (nerdfonts.override { fonts = [ "FiraCode" "Agave" ]; })
         ];
 
         fontconfig = {
