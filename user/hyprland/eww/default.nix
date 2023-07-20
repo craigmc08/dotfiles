@@ -54,10 +54,8 @@ in {
 		};
 
     colors = mkOption {
-      default = ''
-      /* TODO eww scss colors */
-      '';
-      description = "SCSS code for eww colors.";
+			default = null;
+      description = "SCSS code for eww colors. Defaults to ./css/_colors.scss";
     };
 	};
 
@@ -79,7 +77,10 @@ in {
 		};
 
 		# colors file
-		xdg.configFile."eww/css/_colors.scss".text = cfg.colors;
+		xdg.configFile."eww/css/_colors.scss".text =
+			if cfg.colors != null
+				then cfg.colors
+				else (builtins.readFile ./css/_colors.scss);
 
 		systemd.user.services.eww = {
 			Unit = {

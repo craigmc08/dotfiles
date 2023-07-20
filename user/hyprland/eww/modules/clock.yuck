@@ -19,7 +19,8 @@
 					:text ":")
 				(label
 					:text {formattime(EWW_TIME, "%M")}
-					:style {date_rev ? "color: rgba(0, 0, 0, 0); text-shadow: none;" : ""}))
+					:style {date_rev ? "color: rgba(0, 0, 0, 0); text-shadow: none;" : ""}
+					:class "minute"))
 			(revealer
 				:reveal date_rev
 				:transition "crossfade"

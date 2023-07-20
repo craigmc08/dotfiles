@@ -47,7 +47,7 @@ in {
       # User setup.
       users.users.craig = {
         isNormalUser = true;
-        extraGroups = [ "wheel" "networkmanager" ];
+        extraGroups = [ "wheel" "networkmanager" "video" "transmission" "input" ];
       };
     })
     (mkIf cfg.hardware.enable {
@@ -67,6 +67,7 @@ in {
         fonts = with pkgs; [
           roboto
           openmoji-color
+          material-symbols
           fira-code
           agave
           (nerdfonts.override { fonts = [ "FiraCode" "Agave" ]; })
@@ -80,9 +81,16 @@ in {
 
       # Hyprland
       programs.hyprland = { enable = true; };
+      # Smooth backlight control
+      hardware.brillo.enable = true;
 
       # Networking
       networking = { networkmanager.enable = true; };
+
+      # Bluetooth
+      hardware.bluetooth = {
+        enable = true;
+      };
 
       # Sound.
       sound.enable = true;

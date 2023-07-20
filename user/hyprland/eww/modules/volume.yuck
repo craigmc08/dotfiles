@@ -1,9 +1,9 @@
 (defwidget volume-module []
 	(box
-		:class "module-icon"
+		:class "module icon"
 		(eventbox
 			; scroll to change volume
-			:onscroll "echo {} | sed -e 's/up/-/g' -e 's/down/+/g' | xargs -I% wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.005%"
+			:onscroll "echo {} | sed -e 's/up/-/g' -e 's/down/+/g' | xargs -I% wpctl set-volume @DEFAULT_AUDIO_SINK@ 0.01%"
 			:onclick "pavucontrol &"
 			:onrightclick "scripts/volume mute SINK" ; toggle mute on right click
 			(label

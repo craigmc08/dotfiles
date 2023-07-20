@@ -56,7 +56,7 @@ in {
         kb_rules =
 
         touchpad {
-          natural_scroll=no
+          natural_scroll=yes
         }
       }
 
@@ -135,6 +135,30 @@ in {
       bindm = $mainMod,mouse:272,movewindow
       bindm = $mainMod,mouse:273,resizewindow
       bindm = $mainMod ALT,mouse:272,resizewindow
+
+      # switch to/move windows to workspace with Super + (Alt +) Number
+      bind = $mainMod,1,workspace,1
+      bind = $mainMod,2,workspace,2
+      bind = $mainMod,3,workspace,3
+      bind = $mainMod,4,workspace,4
+      bind = $mainMod,5,workspace,5
+      bind = $mainMod,6,workspace,6
+      bind = $mainMod,7,workspace,7
+      bind = $mainMod,8,workspace,8
+      bind = $mainMod,9,workspace,9
+      bind = $mainMod,0,workspace,0
+
+
+      bind = $mainMod SHIFT,1,workspace,1
+      bind = $mainMod SHIFT,2,workspace,2
+      bind = $mainMod SHIFT,3,workspace,3
+      bind = $mainMod SHIFT,4,workspace,4
+      bind = $mainMod SHIFT,5,workspace,5
+      bind = $mainMod SHIFT,6,workspace,6
+      bind = $mainMod SHIFT,7,workspace,7
+      bind = $mainMod SHIFT,8,workspace,8
+      bind = $mainMod SHIFT,9,workspace,9
+      bind = $mainMod SHIFT,0,workspace,0
   		'';
   };
 }

@@ -1,0 +1,30 @@
+/* circular indicators */
+.cpubar {
+	color: $blue;
+}
+.membar {
+	color: $peach;
+}
+.batbar {
+	color: $green;
+
+	.low {
+		color: $red;
+	}
+}
+ 
+.cpubar, .membar, .batbar {
+	background-color: $bg1;
+}
+
+.iconmem {
+	color: $peach;
+}
+.iconcpu {
+	color: $blue;
+}
+
+.icon-text {
+	font-size: 3rem;
+	padding: .7rem;
+}
