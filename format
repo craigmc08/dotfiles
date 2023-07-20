@@ -1,3 +1,0 @@
-#!/usr/bin/env bash
-
-nixfmt $(find . -type f -name '*.nix')

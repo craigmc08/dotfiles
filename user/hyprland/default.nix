@@ -26,7 +26,13 @@ in {
     services.dunst = { enable = true; };
 
     # waybar (status bar)
-    programs.waybar.enable = true;
+    programs.waybar = {
+      enable = true;
+      inherit (import ./waybar.nix {
+        inherit lib;
+        config = cfg;
+      }) settings style;
+    };
 
     # wofi (launcher/menu)
     programs.wofi = {
@@ -46,7 +52,8 @@ in {
       # TODO pick a wallpaper
       # swaybg -i $NIXOS_CONFIG_DIR/pics/wallpaper.png
       exec-once=foot --server
-      exec-once=dust
+      exec-once=waybar
+      exec-once=dunst
 
       input {
         kb_layout = us
