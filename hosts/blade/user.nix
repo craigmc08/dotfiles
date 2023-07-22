@@ -6,6 +6,7 @@
     firefox.enable = true;
     foot.enable = true;
     hyprland.enable = true;
+    spicetify.enable = true;
 
     helix.enable = true;
     fish.enable = true;

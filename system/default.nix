@@ -54,6 +54,12 @@ in {
       # System settings for NixOS that is a real operating system (as opposed to
       # running in WSL or something).
 
+      # Allow spotify and discord to be installed.
+      nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
+        "spotify"
+        "discord"
+      ];
+
       # Make bootable.
       boot = {
         kernelParams = [ "consoleblank=30" ];

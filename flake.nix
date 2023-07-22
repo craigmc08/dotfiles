@@ -36,6 +36,8 @@
       url = "github:nix-community/NixOS-WSL";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    spicetify-nix.url = github:the-argus/spicetify-nix;
   };
 
   outputs = { home-manager, nixpkgs, ... }@inputs:

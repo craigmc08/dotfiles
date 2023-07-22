@@ -109,12 +109,14 @@ in {
 
       $mainMod = SUPER
 
-      # Exit Hyprland with Super+Q
-      bind = $mainMod,Q,exit
+      # Exit Hyprland with Super+Shift+Q
+      bind = $mainMod SHIFT,Q,exit
       # Open terminal with Super+T
       bind = $mainMod,T,exec,footclient
       # Open app launcher with Super+Space
       bind = $mainMod,Space,exec,wofi --show drun
+      # Close active app with Super+Q
+      bind = $mainMod,Q,killactive
 
       # Move focus with Super + H,J,K,L
       bind = $mainMod,H,movefocus,l
@@ -122,10 +124,17 @@ in {
       bind = $mainMod,K,movefocus,u
       bind = $mainMod,L,movefocus,r
 
+      # Move active window with Super + Shift + H,J,K,L
       bind = $mainMod SHIFT,H,swapwindow,l
       bind = $mainMod SHIFT,J,swapwindow,d
       bind = $mainMod SHIFT,K,swapwindow,u
       bind = $mainMod SHIFT,L,swapwindow,r
+
+      # Resize active window with Super + Ctrl + H,J,K,L
+      binde = $mainMod CTRL,H,resizeactive,-20 0
+      binde = $mainMod CTRL,J,resizeactive,0 20
+      binde = $mainMod CTRL,K,resizeactive,0 -20
+      binde = $mainMod CTRL,L,resizeactive,20 0
 
       # Cycle through workspaces with Super + [ or ]
       bind = $mainMod,bracketleft,workspace,e+1
@@ -149,16 +158,16 @@ in {
       bind = $mainMod,0,workspace,0
 
 
-      bind = $mainMod SHIFT,1,workspace,1
-      bind = $mainMod SHIFT,2,workspace,2
-      bind = $mainMod SHIFT,3,workspace,3
-      bind = $mainMod SHIFT,4,workspace,4
-      bind = $mainMod SHIFT,5,workspace,5
-      bind = $mainMod SHIFT,6,workspace,6
-      bind = $mainMod SHIFT,7,workspace,7
-      bind = $mainMod SHIFT,8,workspace,8
-      bind = $mainMod SHIFT,9,workspace,9
-      bind = $mainMod SHIFT,0,workspace,0
+      bind = $mainMod SHIFT,1,movetoworkspace,1
+      bind = $mainMod SHIFT,2,movetoworkspace,2
+      bind = $mainMod SHIFT,3,movetoworkspace,3
+      bind = $mainMod SHIFT,4,movetoworkspace,4
+      bind = $mainMod SHIFT,5,movetoworkspace,5
+      bind = $mainMod SHIFT,6,movetoworkspace,6
+      bind = $mainMod SHIFT,7,movetoworkspace,7
+      bind = $mainMod SHIFT,8,movetoworkspace,8
+      bind = $mainMod SHIFT,9,movetoworkspace,9
+      bind = $mainMod SHIFT,0,movetoworkspace,0
   		'';
   };
 }
