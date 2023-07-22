@@ -8,7 +8,7 @@ in {
   # hyprland is installed system-wide, so this doesn't need to install it
   # This module is just for configuration.
 
-  imports = [./eww];
+  imports = [./eww ./dunst.nix];
 
   options.modules.hyprland = {
     enable = mkEnableOption "hyprland";
@@ -23,10 +23,7 @@ in {
   };
 
   config = mkIf cfg.enable {
-    home.packages = with pkgs; [ wl-clipboard dunst ];
-
-    # dunst (notifications)
-    services.dunst = { enable = true; };
+    home.packages = with pkgs; [ wl-clipboard ];
 
     # wofi (launcher/menu)
     programs.wofi = {
