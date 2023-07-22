@@ -15,13 +15,14 @@
 (include "./windows/system-menu.yuck")
 (include "./windows/calendar.yuck")
 (include "./windows/osd.yuck")
+(include "./windows/music.yuck")
 
 (defwindow bar
 	:monitor 0
 	:geometry (geometry :x "0%"
 											:y "0%"
 											:width "100%"
-											:height "32px"
+											:height "0%"
 											:anchor "top center")
 	:stacking "fg"
 	:exclusive true
@@ -30,6 +31,7 @@
 
 (defwidget bar-box []
 	(centerbox
+		:class "bar-box"
 		(left)
 		(center)
 		(right)))

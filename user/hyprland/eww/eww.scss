@@ -17,6 +17,7 @@
 * {
 	all: unset;
 	font-family: "Agave Nerd Font";
+	font-size: 20px;
 	transition: 200ms ease;
 }
 
@@ -25,18 +26,22 @@
 @import 'css/sidebar';
 @import 'css/calendar';
 @import 'css/osd';
+@import 'css/music';
 
 .bar {
 	background: transparent;
 	color: $fg;
 
-	label {
-		font-size: 1.2rem;
-	}
-
 	.text {
 		margin-top: .2rem;
 	}
+}
+
+.bar-box {
+	padding-top: 10px;
+	padding-bottom: 5px; /* 5px gap from hyprland style */
+	padding-left: 10px;
+	padding-right: 10px;
 }
 
 tooltip {
@@ -62,9 +67,6 @@ tooltip {
 .hour {
 	font-weight: bold;
 	padding-left: 5px;
-}
-.minute {
-	margin-right: 10px;
 }
 
 .date {
@@ -98,8 +100,7 @@ scale trough {
 
 .workspaces {
 	background-color: $bg;
-	margin: 0.4rem 0;
-	margin-left: 10px;
+	margin: 0.6rem 0;
 	padding: 0 5px;
 	@include rounding;
 }
