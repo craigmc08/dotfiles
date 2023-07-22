@@ -2,6 +2,7 @@
 
 with lib;
 let cfg = config.modules.hyprland;
+    homeDir = "~";
 
 in {
   # hyprland is installed system-wide, so this doesn't need to install it
@@ -113,10 +114,32 @@ in {
       bind = $mainMod SHIFT,Q,exit
       # Open terminal with Super+T
       bind = $mainMod,T,exec,footclient
-      # Open app launcher with Super+Space
-      bind = $mainMod,Space,exec,wofi --show drun
+      # Open app launcher with Super
+      bindr = SUPER,SUPER_L,exec,wofi --show drun
       # Close active app with Super+Q
-      bind = $mainMod,Q,killactive
+      bind = $mainMod,Q,killactive,
+      # Fullscreen with Super+F
+      bind = $mainMod,F,fullscreen,
+
+      # Audio control
+      bindl = ,XF86AudioPlay,exec,playerctl play-pause
+      bindl = ,XF86AudioPrev,exec,playerctl previous
+      bindl = ,XF86AudioNext,exec,playerctl next
+
+      # volume
+      bindle = , XF86AudioRaiseVolume, exec, wpctl set-volume -l "1.0" @DEFAULT_AUDIO_SINK@ 6%+
+      binde = , XF86AudioRaiseVolume, exec, ${homeDir}/.config/eww/scripts/volume osd
+      bindle = , XF86AudioLowerVolume, exec, wpctl set-volume -l "1.0" @DEFAULT_AUDIO_SINK@ 6%-
+      binde = , XF86AudioLowerVolume, exec, ${homeDir}/.config/eww/scripts/volume osd
+      bindl = , XF86AudioMute, exec, wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
+      bind = , XF86AudioMute, exec, ${homeDir}/.config/eww/scripts/volume osd
+      bindl = , XF86AudioMicMute, exec, wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
+
+      # backlight
+      bindle = , XF86MonBrightnessUp, exec, brillo -q -u 300000 -A 5
+      binde = , XF86MonBrightnessUp, exec, ${homeDir}/.config/eww/scripts/brightness osd
+      bindle = , XF86MonBrightnessDown, exec, brillo -q -u 300000 -U 5
+      binde = , XF86MonBrightnessDown, exec, ${homeDir}/.config/eww/scripts/brightness osd
 
       # Move focus with Super + H,J,K,L
       bind = $mainMod,H,movefocus,l
