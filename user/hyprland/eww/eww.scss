@@ -91,13 +91,6 @@ scale trough {
 }
 
 /* workspaces */
-.focused {
-	background-color: $bg;
-	border-radius: 1rem;
-	margin: .3rem;
-	padding: .25rem;
-}
-
 .workspaces {
 	background-color: $bg;
 	margin: 0.6rem 0;
@@ -108,10 +101,27 @@ scale trough {
 .ws {
 	border-radius: 2rem;
 	margin: .3rem .25rem;
+	min-width: 15px;
+	min-height: 15px;
 
 	&.empty { background-color: $bg1; }
 	&.mon-0, &.mon- { background-color: $red; }
 	&.mon-1 { background-color: $peach; }
 	&.mon-2 { background-color: $green; }
 	&.mon-3 { background-color: $blue; }
+}
+
+.ws-focus {
+  background: linear-gradient(45deg, $mauve 0%, $green 50%, $sapphire 100%);
+  background-size: 300%;
+  animation: 5s infinite alternate swoop;
+}
+
+@keyframes swoop {
+  0% {
+    background-position: bottom left;
+  }
+  100% {
+    background-position: top right;
+  }
 }

@@ -4,7 +4,4 @@
 		(for ws in {hyprland.workspaces}
 			(button
 				:onclick "hyprctl dispatch workspace ${ws.number}"
-				:class "ws icon ${ws.status}"
-				(box
-					:class `${ws.focused ? "focused" : ""}`
-					:height 3)))))
+				:class "ws icon ${ws.status} ${ws.focused ? "ws-focus" : ""}"))))
