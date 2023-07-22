@@ -108,6 +108,10 @@ in {
       master {
       }
 
+      # start spotify in workspace 9
+      windowrulev2 = tile,title:^(Spotify)$
+      windowrulev2 = workspace 9 silent,title:^(Spotify)$
+
       $mainMod = SUPER
 
       # Exit Hyprland with Super+Shift+Q
@@ -179,7 +183,6 @@ in {
       bind = $mainMod,8,workspace,8
       bind = $mainMod,9,workspace,9
       bind = $mainMod,0,workspace,0
-
 
       bind = $mainMod SHIFT,1,movetoworkspace,1
       bind = $mainMod SHIFT,2,movetoworkspace,2

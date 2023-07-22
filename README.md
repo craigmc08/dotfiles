@@ -32,9 +32,8 @@ cp /etc/nixos/hardware-configuration.nix hosts/<hostname>/hardware-configuration
 
 5. Add an entry to `nixosConfigurations` in `flake.nix` for your new host.
 
-6. `git add` the changed files.
-
-7. `./up` to build the system with the new configuration.
+6. `./up` to build the system with the new configuration. (`up` automatically
+  stages your changes)
 
 Whenever you want to update your system, run `./up` to pull changes from the
 origin remote and rebuild.

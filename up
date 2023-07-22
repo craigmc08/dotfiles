@@ -1,4 +1,15 @@
 #!/usr/bin/env bash
 
-git pull origin main
+git update-index --refresh --quiet
+git diff-index --quiet HEAD --
+
+if [[ $? == 0 ]]; then
+  echo -e "\033[96mPulling latest config from origin/main...\033[0m"
+  git pull origin main
+else
+  echo -e "\033[96mStaging uncomitted changes. Latest config will not be fetched.\033[0m"
+  git add .
+fi
+
+echo -e "\033[96mRebuilding...\033[0m"
 sudo nixos-rebuild switch --flake "$HOME/dotfiles"

@@ -12,8 +12,7 @@ in {
 	config = mkIf cfg.enable {
 		programs.spicetify = {
 			enable = true;
-			theme = spicePkgs.themes.catppuccin-mocha;
-			colorScheme = "flamingo";
+			theme = spicePkgs.themes.Comfy;
 
 			enabledExtensions = with spicePkgs.extensions; [
 				fullAppDisplay
