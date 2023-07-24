@@ -1,7 +1,7 @@
 { config, lib, inputs, ... }:
 
 {
-  imports = [ ../../user ];
+  imports = [ ../../user ../../user/colors/ice.nix ];
   config.modules = {
     firefox.enable = true;
     foot.enable = true;

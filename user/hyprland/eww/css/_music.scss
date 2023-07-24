@@ -42,7 +42,7 @@
   margin: .5rem;
 }
 
-.dark { color: $base; }
+.dark { color: $bg; }
 .light { color: $text; }
 
 .music-artist {
@@ -63,7 +63,7 @@
 
 .music-bar scale {
   highlight {
-    background-image: linear-gradient(to right, $teal, $sky);
+    background-color: $fg;
     border-radius: 24px;
   }
 

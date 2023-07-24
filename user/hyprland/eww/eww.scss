@@ -46,7 +46,6 @@
 
 tooltip {
 	background: $bg;
-	border: 1px solid $border;
 	border-radius: 8px;
 
 	label {
@@ -78,7 +77,7 @@ tooltip {
 }
 
 /* right-aligned modules */
-.bright-icon { color: $brightIcon; }
+.bright-icon { color: $bright; }
 .module-bt { font-size: 1.2rem; }
 
 /* scales */
@@ -105,14 +104,14 @@ scale trough {
 	min-height: 15px;
 
 	&.empty { background-color: $bg1; }
-	&.mon-0, &.mon- { background-color: $red; }
-	&.mon-1 { background-color: $peach; }
-	&.mon-2 { background-color: $green; }
-	&.mon-3 { background-color: $blue; }
+	&.mon-0, &.mon- { background-color: $ws1; }
+	&.mon-1 { background-color: $ws2; }
+	&.mon-2 { background-color: $ws3; }
+	&.mon-3 { background-color: $ws4; }
 }
 
 .ws-focus {
-  background: linear-gradient(45deg, $mauve 0%, $green 50%, $sapphire 100%);
+  background: linear-gradient(45deg, $wsActive1 0%, $wsActive2 50%, $wsActive3 100%);
   background-size: 300%;
   animation: 5s infinite alternate swoop;
 }

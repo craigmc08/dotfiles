@@ -16,5 +16,8 @@
     # other
     ./packages
     ./xdg
+
+    # settings
+    ./colors.nix
   ];
 }

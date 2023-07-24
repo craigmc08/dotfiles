@@ -46,17 +46,13 @@ let dependencies = with pkgs; [
 	'';
 
 	cfg = config.modules.eww;
+	colors = config.modules.colors;
 
 in {
 	options.modules.eww = {
 		package = mkOption {
 			default = inputs.eww.packages.${pkgs.system}.eww-wayland;
 		};
-
-    colors = mkOption {
-			default = null;
-      description = "SCSS code for eww colors. Defaults to ./css/_colors.scss";
-    };
 	};
 
 	config = {
@@ -76,12 +72,6 @@ in {
 			recursive = true;
 		};
 
-		# colors file
-		xdg.configFile."eww/css/_colors.scss".text =
-			if cfg.colors != null
-				then cfg.colors
-				else (builtins.readFile ./css/_colors.scss);
-
 		systemd.user.services.eww = {
 			Unit = {
 				Description = "Eww Daemon";
@@ -93,5 +83,39 @@ in {
 			};
 			Install.WantedBy = ["graphical-session.target"];
 		};
+
+		# colors file
+		xdg.configFile."eww/css/_colors.scss".text = ''
+			$bg: ${colors.bg};
+			$bg1: ${colors.bgLight};
+			$fg: ${colors.fg};
+			$fgLight: ${colors.fgLight};
+			$text: ${colors.text};
+			$subtext: ${colors.subtext};
+			$accent: ${colors.accent};
+
+			$wsEmpty: ${colors.bar.workspace.empty};
+			$ws1: ${colors.bar.workspace.monitor1};
+			$ws2: ${colors.bar.workspace.monitor2};
+			$ws3: ${colors.bar.workspace.monitor3};
+			$ws4: ${colors.bar.workspace.monitor4};
+			$wsActive1: ${colors.bar.workspace.active1};
+			$wsActive2: ${colors.bar.workspace.active2};
+			$wsActive3: ${colors.bar.workspace.active3};
+
+			$bright: ${colors.bar.system.brightness};
+			$volume: ${colors.bar.system.volume};
+			$bluetooth: ${colors.bar.system.bluetooth};
+			$wifi: ${colors.bar.system.wifi};
+
+			$cpu: ${colors.bar.system.cpu};
+			$mem: ${colors.bar.system.mem};
+			$battery: ${colors.bar.system.battery};
+			$batteryCharging: ${colors.bar.system.batteryCharging};
+			$batteryLow: ${colors.bar.system.batteryCritical};
+
+			$clock: ${colors.bar.clock};
+			$date: ${colors.bar.date};
+		'';
 	};
 }

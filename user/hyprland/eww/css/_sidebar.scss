@@ -83,17 +83,17 @@
 
 .volume-slider-box,
 .brightness-slider-box {
-  trough { background-color: $base; }
+  trough { background-color: $bg; }
 }
 
 .volume-bar highlight {
   @include rounding;
-  background-image: linear-gradient(to right, $teal, $sky);
+  background-color: $volume;
 }
 
 .brightness-slider-box scale highlight {
   @include rounding;
-  background-image: linear-gradient(to right, $yellow, $peach);
+  background-color: $bright;
 }
 
 /* battery & power button */
@@ -101,16 +101,16 @@
   margin: .5rem 1rem;
 
   .battery-icon {
-    color: $green;
+    color: $battery;
     font-size: 2rem;
 
-    .low { color: $red; }
+    .low { color: $batteryLow; }
   }
 
-  .battery-rate { color: $mauve; }
+  .battery-rate { color: $accent; }
 
   .battery-status {
-    color: $subtext0;
+    color: $subtext;
     margin: 0 .5rem;
   }
 
@@ -127,12 +127,12 @@
 
 
 .bt-connected {
-  background-color: $blue;
-  color: $crust;
+  background-color: $bluetooth;
+  color: $bg;
 }
 
 .net-connected {
-  background-color: $mauve;
-  color: $crust;
+  background-color: $wifi;
+  color: $bg;
 }
 

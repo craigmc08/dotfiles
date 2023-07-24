@@ -3,6 +3,8 @@
 with lib;
 let cfg = config.modules.hyprland;
     homeDir = "~";
+    colors = config.modules.colors;
+    color = (import ../../lib/color.nix) { inherit lib; };
 
 in {
   # hyprland is installed system-wide, so this doesn't need to install it
@@ -62,43 +64,43 @@ in {
         sensitivity = 1.0 # mouse cursor
         apply_sens_to_raw = 0 # do not apply sensitivity to raw mouse input mode
 
-      	gaps_in = 5
-      	gaps_out = 5
-      	border_size = 2
-      	col.active_border = rgba(33ccffee) rgba(00ff99ee) 45deg
-      	col.inactive_border = rgba(595959aa)
+        gaps_in = 5
+        gaps_out = 5
+        border_size = 2
+        col.active_border = ${color.hex2hypr colors.window.border}
+        col.inactive_border = ${color.hex2hypr colors.window.inactiveBorder}
 
-      	layout = dwindle
+        layout = dwindle
       }
 
       decoration {
-      	rounding = 15
+        rounding = 15
 
-      	blur = true
-      	blur_size = 3
-      	blur_passes = 1
-      	blur_new_optimizations = true
+        blur = true
+        blur_size = 3
+        blur_passes = 1
+        blur_new_optimizations = true
 
-      	drop_shadow = true
+        drop_shadow = true
         shadow_ignore_window = true
-      	shadow_range = 100
-      	shadow_render_power = 5
-      	col.shadow = rgba(00000099)
+        shadow_range = 100
+        shadow_render_power = 5
+        col.shadow = ${color.hex2hypr colors.window.shadow}
       }
 
       animations {
-      	enabled = true
+        enabled = true
 
-      	bezier = overshot, 0.05, 0.9, 0.1, 1.1
+        bezier = overshot, 0.05, 0.9, 0.1, 1.1
 
-      	animation = windows, 1, 4, overshot, slide
-      	animation = border, 1, 10, default
-      	animation = fade, 1, 10, default
-      	animation = workspaces, 1, 6, overshot, slidevert
+        animation = windows, 1, 4, overshot, slide
+        animation = border, 1, 10, default
+        animation = fade, 1, 10, default
+        animation = workspaces, 1, 6, overshot, slidevert
       }
 
       dwindle {
-      	pseudotile = true
+        pseudotile = true
         force_split = 0
       }
 
@@ -191,6 +193,6 @@ in {
       bind = $mainMod SHIFT,8,movetoworkspace,8
       bind = $mainMod SHIFT,9,movetoworkspace,9
       bind = $mainMod SHIFT,0,movetoworkspace,0
-  		'';
+    '';
   };
 }

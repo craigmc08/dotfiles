@@ -7,23 +7,23 @@ calendar {
   padding: 5px;
 
   :selected {
-    color: $mauve;
+    color: $accent;
   }
 
   .header {
-    color: $subtext1;
+    color: $subtext;
   }
 
   .highlight {
-    color: $maroon;
+    color: $accent;
     font-weight: bold;
   }
 
   .button {
-    color: $sapphire;
+    color: $accent;
   }
 
   :indeterminate {
-    color: $overlay0;
+    color: $subtext;
   }
 }
