@@ -6,6 +6,7 @@
     ./foot # terminal
     ./hyprland # window manager styling/config
     ./spicetify # spotify
+    ./discord
 
     # cli
     ./helix

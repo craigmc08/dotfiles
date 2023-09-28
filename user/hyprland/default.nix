@@ -41,6 +41,8 @@ in {
     home.file.".config/hypr/hyprland.conf".text = ''
       # TODO if i have devices with diff monitors, what to do?
       monitor=eDP-1,1920x1080@60,0x0,1
+      monitor=HDMI-A-1,preferred,auto,1,mirror,eDP-1
+      monitor=,preferred,auto,1,mirror,eDP-1
 
       # TODO pick a wallpaper
       # swaybg -i $NIXOS_CONFIG_DIR/pics/wallpaper.png
@@ -181,7 +183,7 @@ in {
       bind = $mainMod,7,workspace,7
       bind = $mainMod,8,workspace,8
       bind = $mainMod,9,workspace,9
-      bind = $mainMod,0,workspace,0
+      bind = $mainMod,0,workspace,10
 
       bind = $mainMod SHIFT,1,movetoworkspace,1
       bind = $mainMod SHIFT,2,movetoworkspace,2
@@ -192,7 +194,7 @@ in {
       bind = $mainMod SHIFT,7,movetoworkspace,7
       bind = $mainMod SHIFT,8,movetoworkspace,8
       bind = $mainMod SHIFT,9,movetoworkspace,9
-      bind = $mainMod SHIFT,0,movetoworkspace,0
+      bind = $mainMod SHIFT,0,movetoworkspace,10
     '';
   };
 }

@@ -202,7 +202,7 @@
           :text {battery_icons[round(EWW_BATTERY.total_avg / (100 / arraylength(battery_icons)) - 1,0)]})
         (label
           :class "text"
-          :text {round(EWW_BATTERY.total_avg,0)})
+          :text "${round(EWW_BATTERY.total_avg,0)}%")
         (label
           :class "battery-status text"
           :text {battery.status})
