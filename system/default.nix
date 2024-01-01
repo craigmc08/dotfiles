@@ -85,6 +85,13 @@ in {
         };
       };
 
+      # KDE
+      # services.xserver = {
+      #   enable = true;
+      #   displayManager.sddm.enable = true;
+      #   desktopManager.plasma5.enable = true;
+      # };
+
       # Hyprland
       programs.hyprland = { enable = true; };
       # Smooth backlight control
