@@ -24,17 +24,17 @@ mkdir hosts/<hostname>
 cp /etc/nixos/hardware-configuration.nix hosts/<hostname>/hardware-configuration.nix
 ```
 
-4. Make `hosts/<hostname>/default.nix` and import at least `../../nixos`. You can
+4. Make `hosts/<hostname>/system.nix` and import at least `../../system`. You can
   also put system-specific configuration here. Use an existing host for inspiration!
 
-  - `kafka` runs in WSL.
-  - More coming soon!
+5. Also make `hosts/<hostname>/user.nix` and import at least `../../user`. Use an
+  existing host for inspiration to see what kinds of programs and config options are available.
 
-5. Add an entry to `nixosConfigurations` in `flake.nix` for your new host.
+7. Add an entry to `nixosConfigurations` in `flake.nix` for your new host.
 
-6. `git add` the changed files.
+8. `git add` the changed files.
 
-7. `./up` to build the system with the new configuration.
+9. `./up` to build the system with the new configuration.
 
 Whenever you want to update your system, run `./up` to pull changes from the
 origin remote and rebuild.
@@ -42,8 +42,8 @@ origin remote and rebuild.
 ## layout
 
 - `hosts/` contains host-specific configuration.
-- `nixos/` contains system configuration.
-- `home/` contains home-manager configuration.
+- `system/` contains system configuration.
+- `user/` contains home-manager configuration for individual programs.
 
 ## thanks
 
