@@ -1,10 +1,21 @@
 { inputs, pkgs, config, ... }: {
-  home.stateVersion = "23.05";
+  home.username = "craig";
+  home.homeDirectory = "/home/craig";
+  home.stateVersion = "24.11";
+  programs.home-manager.enable = true;
+
+  nixpkgs = {
+    config = {
+      allowUnfree = true;
+      allowUnfreePredicate = _: true;
+    };
+  };
+
   imports = [
     # gui
     ./firefox
     ./foot # terminal
-    ./hyprland # window manager styling/config
+    # ./hyprland # window manager styling/config
     ./spicetify # spotify
     ./discord
     ./minecraft

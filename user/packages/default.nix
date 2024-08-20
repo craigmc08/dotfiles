@@ -8,7 +8,7 @@ in {
   config = mkIf cfg.enable {
     home.packages = with pkgs; [
       # Command line tools.
-      exa
+      eza
       fd
       htop
       fzf
@@ -22,8 +22,8 @@ in {
       neofetch
 
       # Editing.
-      nixfmt
-      rnix-lsp # nix lsp
+      nixfmt-classic
+      nil # nix lsp
       taplo # toml lsp
     ];
   };

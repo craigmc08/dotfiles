@@ -19,8 +19,8 @@ in {
       interactiveShellInit = "	set fish_greeting # Disable greeting\n";
 
       functions = {
-        ll = "exa --agl $argv";
-        lll = "exa -glT $argv";
+        ll = "eza --agl $argv";
+        lll = "eza -glT $argv";
       };
     };
   };

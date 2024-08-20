@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
 
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -16,7 +16,7 @@
     };
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-23.05";
+      url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -40,41 +40,23 @@
     spicetify-nix.url = github:the-argus/spicetify-nix;
   };
 
-  outputs = { home-manager, nixpkgs, ... }@inputs:
+  outputs = { self, home-manager, nixpkgs, ... }@inputs:
     let
-      specialArgs.inputs = inputs;
+      inherit (self) outputs;
+      inherit (nixpkgs) lib;
+      mkHome = hostname: {
+        "craig@${hostname}" = home-manager.lib.homeManagerConfiguration {
+          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          extraSpecialArgs = { inherit inputs outputs; };
 
-      mkSystem = { system, hostname }:
-        nixpkgs.lib.nixosSystem {
-          inherit specialArgs;
-          system = system;
-          modules = [
-            { networking.hostName = hostname; }
-            (./. + "/hosts/${hostname}/system.nix")
-            (./. + "/hosts/${hostname}/hardware-configuration.nix")
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                extraSpecialArgs = { inherit inputs; };
-                users.craig = (./. + "/hosts/${hostname}/user.nix");
-              };
-            }
-          ];
+          modules = [ (./. + "/hosts/${hostname}/user.nix") ];
         };
-    in {
-      nixosConfigurations = {
-        kafka = mkSystem {
-          system = "x86_64-linux";
-          hostname = "kafka";
-        };
+      }; 
 
-        blade = mkSystem {
-          system = "x86_64-linux";
-          hostname = "blade";
-        };
-      };
+   in {
+      defaultPackage.x86_64-linux = home-manager.defaultPackage.x86_64-linux;
+
+      homeConfigurations = mkHome "firefly" // mkHome "kafka";
     };
 
   nixConfig = {
