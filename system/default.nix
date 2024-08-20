@@ -6,7 +6,35 @@ let cfg = config.modules.system;
 in {
   options.modules.system = {
     enable = mkEnableOption "system";
-    hardware = { enable = mkEnableOption "boot"; };
+    hardware = {
+      enable = mkEnableOption "boot";
+    };
+
+    desktop = {
+      hyprland.enable = mkEnableOption "hyprland";
+      kde.enable = mkEnableOption "kde";
+    };
+
+    programs = {
+      steam.enable = mkEnableOption "steam";
+    };
+
+    nvidia = {
+      enable = mkEnableOption "nvidia";
+      package = mkPackageOption pkgs "nvidia" {
+        default = null;
+        example = "pkgs.config.boot.kernelPackages.nvidiaPackages.stable";
+      };
+
+      intelBusId = mkOption {
+        default = null;
+        example = "PCI:0:2:0";
+      };
+      nvidiaBusId = mkOption {
+        default = null;
+        example = "PCI:0:2:0";
+      };
+    };
   };
 
   config = mkMerge [
@@ -58,7 +86,17 @@ in {
       nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) [
         "spotify"
         "discord"
+        "steam"
+        "steam-original"
+        "steam-run"
+        "nvidia-x11"
+        "nvidia-settings"
+        "nvidia-persistenced"
+        "aseprite"
       ];
+
+      # Enable printing.
+      services.printing.enable = true;
 
       # Make bootable.
       boot = {
@@ -85,15 +123,7 @@ in {
         };
       };
 
-      # KDE
-      # services.xserver = {
-      #   enable = true;
-      #   displayManager.sddm.enable = true;
-      #   desktopManager.plasma5.enable = true;
-      # };
 
-      # Hyprland
-      programs.hyprland = { enable = true; };
       # Smooth backlight control
       hardware.brillo.enable = true;
 
@@ -121,6 +151,67 @@ in {
         opengl = {
           enable = true;
           driSupport = true;
+        };
+      };
+    })
+    (mkIf cfg.desktop.hyprland.enable {
+      # Hyprland
+      programs.hyprland = { enable = true; };
+    })
+    (mkIf cfg.desktop.kde.enable {
+      # KDE
+      services.xserver = {
+        enable = true;
+        displayManager.sddm.enable = true;
+        desktopManager.plasma5.enable = true;
+      };
+    })
+    (mkIf cfg.programs.steam.enable {
+      nixpkgs.config.packageOverrides = pkgs: {
+        steam = pkgs.steam.override {
+          extraPkgs = pkgs: with pkgs; [
+            cups # needed for Vampire Survivors
+          ];
+        };
+      };
+      programs.steam = {
+        enable = true;
+        remotePlay.openFirewall = true;
+        dedicatedServer.openFirewall = true;
+      };
+    })
+    (mkIf cfg.nvidia.enable {
+      hardware.opengl = {
+        enable = true;
+        driSupport = true;
+        driSupport32Bit = true;
+      };
+
+      # Load nvidia driver for Xorg and Wayland
+      # TODO: need an option to choose e.g. "nvidiaLegacy470"
+      services.xserver.videoDrivers = ["nvidia"];
+
+      hardware.nvidia = {
+        modesetting.enable = true;
+
+        # Enable if having corruptions or crashes on wake.
+        powerManagement.enable = false;
+        powerManagement.finegrained = false;
+
+        open = false;
+
+        # access with `nvidia-settings`
+        nvidiaSettings = true;
+
+        package = cfg.nvidia.package;
+
+        # for hybrid laptops
+        # TODO: make it possible to choose whether to use prime or not in cfg
+        prime = {
+          sync.enable = true;
+
+          intelBusId = cfg.nvidia.intelBusId;
+          nvidiaBusId = cfg.nvidia.nvidiaBusId;
         };
       };
     })

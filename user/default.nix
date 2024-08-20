@@ -7,6 +7,8 @@
     ./hyprland # window manager styling/config
     ./spicetify # spotify
     ./discord
+    ./minecraft
+    ./aseprite
 
     # cli
     ./helix
