@@ -15,11 +15,11 @@
     # gui
     ./firefox
     ./foot # terminal
-    # ./hyprland # window manager styling/config
     ./spicetify # spotify
     ./discord
     ./minecraft
     ./aseprite
+    ./wezterm
 
     # cli
     ./helix

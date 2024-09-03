@@ -37,16 +37,20 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    spicetify-nix.url = github:the-argus/spicetify-nix;
+    spicetify-nix.url = "github:the-argus/spicetify-nix";
+
+    nixgl.url = "github:nix-community/nixGL";
   };
 
   outputs = { self, home-manager, nixpkgs, ... }@inputs:
     let
       inherit (self) outputs;
-      inherit (nixpkgs) lib;
       mkHome = hostname: {
         "craig@${hostname}" = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs { system = "x86_64-linux"; };
+          pkgs = import nixpkgs {
+            system = "x86_64-linux";
+            overlays = [ inputs.nixgl.overlay ];
+          };
           extraSpecialArgs = { inherit inputs outputs; };
 
           modules = [ (./. + "/hosts/${hostname}/user.nix") ];

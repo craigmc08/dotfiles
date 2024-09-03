@@ -12,4 +12,4 @@ else
 fi
 
 echo -e "\033[96mRebuilding...\033[0m"
-sudo nixos-rebuild switch --flake "$HOME/dotfiles"
+nix run . -- switch --flake . --impure
