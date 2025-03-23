@@ -20,12 +20,14 @@
     ./minecraft
     ./aseprite
     ./wezterm
+    ./niri
 
     # cli
     ./helix
     ./fish
     ./direnv
     ./git
+    ./jj
 
     # other
     ./packages

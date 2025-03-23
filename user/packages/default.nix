@@ -16,6 +16,9 @@ in {
       zip
       ripgrep
       ffmpeg
+      rustup
+      meson
+      ninja
 
       # System managing.
       ncdu
