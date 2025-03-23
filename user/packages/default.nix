@@ -9,6 +9,7 @@ in {
     home.packages = with pkgs; [
       # Command line tools.
       eza
+      bat
       fd
       htop
       fzf
