@@ -6,6 +6,10 @@
     url = "github:nix-community/home-manager/release-25.05";
     inputs.nixpkgs.follows = "nixpkgs";
   };
+  inputs.spicetify-nix = {
+    url = "github:Gerg-L/spicetify-nix";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
 
   outputs =
     inputs@{ nixpkgs, home-manager, ... }:
@@ -17,6 +21,8 @@
       nixosConfigurations.${hostName} = nixpkgs.lib.nixosSystem {
         modules = [
           ./configuration.nix
+          ./x11
+          # ./niri
 
           {
             networking.hostName = hostName;
@@ -27,6 +33,7 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = { inherit inputs; };
             home-manager.users.craig = import ./home;
           }
         ];

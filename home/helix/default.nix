@@ -4,9 +4,5 @@
     enable = true;
   };
   
-  home = {
-    file = {
-      "~/.config/helix/config.toml".source = config.lib.file.mkOutOfStoreSymlink ./config.toml;
-    };
-  };
+  xdg.configFile."helix/config.toml".source = config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/home/helix/config.toml";
 }

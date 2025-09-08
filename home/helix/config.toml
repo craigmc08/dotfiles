@@ -1,1 +1,75 @@
-theme = "bogster";
+theme = "bogster"
+
+[editor]
+cursorline = true
+completion-trigger-len = 1
+idle-timeout = 50
+mouse = false
+rulers = [80, 120]
+true-color = true
+color-modes = true
+end-of-line-diagnostics = "hint"
+
+[editor.statusline]
+mode.normal = " "
+mode.insert = "i"
+mode.select = "s"
+left = ["mode", "spinner", "file-name"]
+center = []
+right = ["selections", "primary-selection-length", "position", "spacer", "diagnostics", "workspace-diagnostics", "version-control"]
+
+[editor.lsp]
+display-messages = true
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "block"
+
+[editor.indent-guides]
+# render = true
+character = '┆'
+
+[editor.soft-wrap]
+enable = true
+
+[editor.file-picker]
+hidden = false
+
+[editor.inline-diagnostics]
+cursor-line = "warning"
+
+[keys.normal]
+"y" = "move_char_left"
+"n" = "move_visual_line_down"
+"e" = "move_visual_line_up"
+"o" = "move_char_right"
+'k' = 'move_next_word_end'
+'l' = 'open_below'
+'L' = 'open_above'
+'j' = 'search_next'
+'h' = 'yank'
+'H' = 'yank_joined'
+
+[keys.normal."g"]
+'y' = 'goto_line_start'
+'o' = 'goto_line_end'
+'e' = 'move_line_up'
+'n' = 'move_line_down'
+'k' = 'goto_last_line'
+'h' = 'goto_type_definition'
+
+[keys.normal."space"]
+'h' = 'yank_to_clipboard'
+'H' = 'yank_to_primary_clipboard'
+
+[keys.select]
+'y' = 'extend_char_left'
+'n' = 'extend_visual_line_down'
+'e' = 'extend_visual_line_up'
+'o' = 'extend_char_right'
+'k' = 'extend_next_word_end'
+'l' = 'open_below'
+'j' = 'extend_search_next'
+'h' = 'yank'
+'H' = 'yank_joined'

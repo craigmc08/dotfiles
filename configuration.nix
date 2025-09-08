@@ -41,18 +41,6 @@
     LC_TIME = "en_US.UTF-8";
   };
 
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Enable the GNOME Desktop Environment.
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
-
-  # Configure keymap in X11
-  services.xserver.xkb = {
-    layout = "us";
-    variant = "workman";
-  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -73,17 +61,11 @@
     #media-session.enable = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
-  # services.xserver.libinput.enable = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.craig = {
     isNormalUser = true;
     description = "craig";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-    #  thunderbird
-    ];
   };
 
   # Install firefox.
@@ -100,7 +82,23 @@
     git
   #  wget
   ];
+  programs.zsh.enable = true;
+  users.defaultUserShell = pkgs.zsh;
 
+  fonts = {
+    packages = [
+      pkgs.openmoji-color
+      pkgs.nerd-fonts.blex-mono
+    ];
+
+    fontconfig = {
+      hinting.autohint = true;
+      defaultFonts = {
+        emoji = [ "OpenMoji Color" ];
+      };
+    };
+  };
+  
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
