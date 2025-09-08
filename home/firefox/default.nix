@@ -11,27 +11,32 @@
         "*".installation_mode = "blocked";
         # uBlock origin
         "uBlock0@raymondhill.net" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+          install_url =
+            "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
           installation_mode = "force_installed";
         };
         # Privacy Badger
         "jid1-MnnxcxisBPnSXQ@jetpack" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi";
+          install_url =
+            "https://addons.mozilla.org/firefox/downloads/latest/privacy-badger17/latest.xpi";
           installation_mode = "force_installed";
         };
         # Bitwarden
         "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+          install_url =
+            "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
           installation_mode = "force_installed";
         };
         # Tab volume control
         "{c4b582ec-4343-438c-bda2-2f691c16c262}" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/600-sound-volume/latest.xpi";
+          install_url =
+            "https://addons.mozilla.org/firefox/downloads/latest/600-sound-volume/latest.xpi";
           installation_mode = "force_installed";
         };
         # Container shortcut keys
         "firefox.container-shortcuts@strategery.io" = {
-          install_url = "https://addons.mozilla.org/firefox/downloads/latest/easy-container-shortcuts/latest.xpi";
+          install_url =
+            "https://addons.mozilla.org/firefox/downloads/latest/easy-container-shortcuts/latest.xpi";
           installation_mode = "force_installed";
         };
         # TODO: sponsor block
@@ -45,12 +50,13 @@
         engines = {
           ecosia = {
             name = "Ecosia";
-            urls = [{template = "https://ecosia.org/search?q={searchTerms}";}];
+            urls =
+              [{ template = "https://ecosia.org/search?q={searchTerms}"; }];
           };
         };
       };
 
-      bookmarks = {};
+      bookmarks = { };
 
       containersForce = true;
       containers.personal = {
@@ -86,11 +92,11 @@
         "browser.bookmarks.restore_default_bookmarks" = false;
         "browser.bookmarks.addedImportButton" = true;
 
-        
         # Disable crappy home activity stream page
         "browser.newtabpage.activity-stream.feeds.topsites" = false;
         "browser.newtabpage.activity-stream.showSponsoredTopSites" = false;
-        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts" = false;
+        "browser.newtabpage.activity-stream.improvesearch.topSiteSearchShortcuts" =
+          false;
         "browser.newtabpage.blocked" = lib.genAttrs [
           # Youtube
           "26UbzFJ7qT9/4DhodHKA1Q=="
@@ -106,7 +112,6 @@
           "T9nJot5PurhJSy8n038xGA=="
         ] (_: 1);
 
-        
         # Disable some telemetry
         "app.shield.optoutstudies.enabled" = false;
         "browser.discovery.enabled" = false;
@@ -142,9 +147,9 @@
   };
 
   xdg.mimeApps.defaultApplications = {
-    "text/html" = ["firefox.desktop"];
-    "text/xml" = ["firefox.desktop"];
-    "x-scheme-handler/http" = ["firefox.desktop"];
-    "x-scheme-handler/https" = ["firefox.desktop"];
+    "text/html" = [ "firefox.desktop" ];
+    "text/xml" = [ "firefox.desktop" ];
+    "x-scheme-handler/http" = [ "firefox.desktop" ];
+    "x-scheme-handler/https" = [ "firefox.desktop" ];
   };
 }

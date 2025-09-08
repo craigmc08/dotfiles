@@ -11,13 +11,7 @@
     };
   };
 
-  imports = [
-    ./helix
-    ./alacritty
-    ./spicetify
-    ./firefox
-    ../niri/config.nix
-  ];
+  imports = [ ./helix ./alacritty ./spicetify ./firefox ../niri/config.nix ];
 
   config = {
     home.stateVersion = "25.05";

@@ -5,12 +5,13 @@
     enable = true;
     settings = {
       window = {
-        padding = { x = 8; y = 8; };
+        padding = {
+          x = 8;
+          y = 8;
+        };
       };
 
-      font = {
-        normal = { family = "BlexMono Nerd Font"; };
-      };
+      font = { normal = { family = "BlexMono Nerd Font"; }; };
 
       colors = {
         primary = {

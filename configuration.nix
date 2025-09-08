@@ -5,10 +5,9 @@
 { config, pkgs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -92,25 +91,20 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     git
-  #  wget
+    #  wget
   ];
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
 
   fonts = {
-    packages = [
-      pkgs.openmoji-color
-      pkgs.nerd-fonts.blex-mono
-    ];
+    packages = [ pkgs.openmoji-color pkgs.nerd-fonts.blex-mono ];
 
     fontconfig = {
       hinting.autohint = true;
-      defaultFonts = {
-        emoji = [ "OpenMoji Color" ];
-      };
+      defaultFonts = { emoji = [ "OpenMoji Color" ]; };
     };
   };
-  
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;

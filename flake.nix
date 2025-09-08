@@ -15,13 +15,11 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs =
-    inputs@{ nixpkgs, home-manager, ... }:
+  outputs = inputs@{ nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       hostName = "lauma"; # Set this variable equal to your hostName
-    in
-    {
+    in {
       nixosConfigurations.${hostName} = nixpkgs.lib.nixosSystem {
         modules = [
           ./configuration.nix
@@ -42,9 +40,7 @@
           }
         ];
 
-        specialArgs = {
-          inherit inputs;
-        };
+        specialArgs = { inherit inputs; };
       };
     };
 }
