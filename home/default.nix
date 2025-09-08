@@ -15,6 +15,7 @@
     ./helix
     ./alacritty
     ./spicetify
+    ../niri/config.nix
   ];
 
   config = {
@@ -36,6 +37,8 @@
       pkgs.nixfmt
       pkgs.nil # Nix language server
       pkgs.taplo # TOML language server
+
+      pkgs.discord
     ];
 
     programs.zsh = {

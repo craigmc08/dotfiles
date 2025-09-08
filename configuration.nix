@@ -41,6 +41,12 @@
     LC_TIME = "en_US.UTF-8";
   };
 
+  console.useXkbConfig = true;
+  # Configure keymap in X11
+  services.xserver.xkb = {
+    layout = "us";
+    variant = "workman";
+  };
 
   # Enable CUPS to print documents.
   services.printing.enable = true;
@@ -70,6 +76,13 @@
 
   # Install firefox.
   programs.firefox.enable = true;
+
+  programs.steam = {
+    enable = true;
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;

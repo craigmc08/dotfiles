@@ -1,5 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
-  # programs.niri.enable = true;
+  imports = [ inputs.niri.nixosModules.niri ];
+
+  programs.niri.enable = true;
+
+  services.xserver.displayManager.gdm.enable = true;
 }

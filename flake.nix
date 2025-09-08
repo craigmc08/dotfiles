@@ -10,6 +10,10 @@
     url = "github:Gerg-L/spicetify-nix";
     inputs.nixpkgs.follows = "nixpkgs";
   };
+  inputs.niri = {
+    url = "github:sodiboo/niri-flake";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
 
   outputs =
     inputs@{ nixpkgs, home-manager, ... }:
@@ -21,8 +25,8 @@
       nixosConfigurations.${hostName} = nixpkgs.lib.nixosSystem {
         modules = [
           ./configuration.nix
-          ./x11
-          # ./niri
+          # ./x11
+          ./niri
 
           {
             networking.hostName = hostName;
