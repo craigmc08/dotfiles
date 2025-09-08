@@ -23,6 +23,8 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
+  hardware.bluetooth.enable = true;
+
   # Set your time zone.
   time.timeZone = "America/New_York";
 
@@ -73,9 +75,6 @@
     description = "craig";
     extraGroups = [ "networkmanager" "wheel" ];
   };
-
-  # Install firefox.
-  programs.firefox.enable = true;
 
   programs.steam = {
     enable = true;

@@ -6,4 +6,5 @@
   programs.niri.enable = true;
 
   services.xserver.displayManager.gdm.enable = true;
+  services.playerctld.enable = true;
 }

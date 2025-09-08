@@ -15,6 +15,7 @@
     ./helix
     ./alacritty
     ./spicetify
+    ./firefox
     ../niri/config.nix
   ];
 
@@ -22,12 +23,17 @@
     home.stateVersion = "25.05";
 
     home.packages = [
+      # cli tools
       pkgs.eza
       pkgs.unzip
       pkgs.zip
       pkgs.ripgrep
       pkgs.ffmpeg
 
+      # configuration tools
+      pkgs.overskride # bluetooth manager
+
+      # system management
       pkgs.htop
       pkgs.neofetch
       pkgs.ncdu
