@@ -2,9 +2,13 @@
   description = "A simple system flake using some Aux defaults";
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+  inputs.home-manager = {
+    url = "github:nix-community/home-manager/release-25.05";
+    inputs.nixpkgs.follows = "nixpkgs";
+  };
 
   outputs =
-    inputs@{ nixpkgs, ... }:
+    inputs@{ nixpkgs, home-manager, ... }:
     let
       system = "x86_64-linux";
       hostName = "lauma"; # Set this variable equal to your hostName
@@ -17,6 +21,13 @@
           {
             networking.hostName = hostName;
             nixpkgs.hostPlatform = system;
+          }
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.craig = import ./home;
           }
         ];
 
