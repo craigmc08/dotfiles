@@ -1,3 +1,5 @@
+# Fallback GNOME desktop environment. To use, remove imports of ./system.nix
+# and ./default.nix and import this module in the system configuration.
 { config, pkgs, ... }:
 
 {
@@ -11,3 +13,4 @@
   # Enable touchpad support (enabled default in most desktopManager).
   # services.xserver.libinput.enable = true;
 }
+

@@ -1,3 +1,4 @@
+# Import as a system configuration module.
 { config, pkgs, inputs, ... }:
 
 {

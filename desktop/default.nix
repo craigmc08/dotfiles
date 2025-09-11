@@ -1,3 +1,4 @@
+# Import in home-manager configuration.
 { config, pkgs, ... }:
 
 {
@@ -8,9 +9,9 @@
   ];
 
   xdg.configFile."niri/config.kdl".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/niri/config.kdl";
+    config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/desktop/config.kdl";
   xdg.configFile."waybar".source =
-    config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/niri/waybar";
+    config.lib.file.mkOutOfStoreSymlink "${config.dotfiles}/desktop/waybar";
 
   programs.waybar = { enable = true; };
 
@@ -22,5 +23,9 @@
         width = 2;
       };
     };
+  };
+
+  programs.swaylock = {
+    enable = true;
   };
 }

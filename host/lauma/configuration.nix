@@ -3,5 +3,6 @@
 {
   imports = [
     ../../system/configuration.nix
+    ../../desktop/system.nix
   ];
 }
