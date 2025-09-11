@@ -5,9 +5,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [
-    ./wine.nix
-  ];
+  imports = [ ./wine.nix ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;

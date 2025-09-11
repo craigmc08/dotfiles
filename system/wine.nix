@@ -1,7 +1,5 @@
 { config, pkgs, ... }:
 
 {
-  environment.systemPackages = [
-    pkgs.wineWow64Packages.full
-  ];
+  environment.systemPackages = [ pkgs.wineWow64Packages.full ];
 }

@@ -20,24 +20,24 @@
       specialArgs = { inherit inputs; };
       mkSystem = { system, hostName }:
         nixpkgs.lib.nixosSystem {
-                modules = [
-                  {
-                    networking.hostName = hostName;
-                    nixpkgs.hostPlatform = system;
-                  }
-                  ./host/${hostName}/hardware-configuration.nix
-                  ./host/${hostName}/configuration.nix
-                  home-manager.nixosModules.home-manager
-                  {
-                    home-manager.useGlobalPkgs = true;
-                    home-manager.useUserPackages = true;
-                    home-manager.extraSpecialArgs = specialArgs;
-                    home-manager.users.craig = import ./host/${hostName}/home.nix;
-                  }
-                ];
+          modules = [
+            {
+              networking.hostName = hostName;
+              nixpkgs.hostPlatform = system;
+            }
+            ./host/${hostName}/hardware-configuration.nix
+            ./host/${hostName}/configuration.nix
+            home-manager.nixosModules.home-manager
+            {
+              home-manager.useGlobalPkgs = true;
+              home-manager.useUserPackages = true;
+              home-manager.extraSpecialArgs = specialArgs;
+              home-manager.users.craig = import ./host/${hostName}/home.nix;
+            }
+          ];
 
-                specialArgs = specialArgs;
-              };
+          specialArgs = specialArgs;
+        };
     in {
       nixosConfigurations = {
         lauma = mkSystem {
