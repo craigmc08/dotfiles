@@ -97,7 +97,8 @@
   users.defaultUserShell = pkgs.zsh;
 
   fonts = {
-    packages = [ pkgs.openmoji-color pkgs.nerd-fonts.blex-mono ];
+    packages =
+      [ pkgs.openmoji-color pkgs.nerd-fonts.blex-mono pkgs.material-symbols ];
 
     fontconfig = {
       hinting.autohint = true;

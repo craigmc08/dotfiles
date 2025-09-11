@@ -29,11 +29,11 @@ output "DP-2" {
     mode "1920x1080@143.855"
     scale 1
     transform "normal"
-    position x=0 y=184
+    position x=0 y=360
 }
 output "DP-3" {
     mode "3840x2160@59.997"
-    scale 1.71
+    scale 1.5
     transform "normal"
     position x=1920 y=0
 }
