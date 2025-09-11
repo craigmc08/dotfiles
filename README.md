@@ -12,10 +12,13 @@ and rebuild system:
 sudo nixos-rebuild switch
 ```
 
-after cloning this repo, generate hardware config with
+after cloning this repo, setup the host-specific config. choose an existing one
+to clone from, and then generate hardware config.
 
 ```sh
-  TODO find this command
+# `lauma` is the host to copy config from, you can update it later if desired.
+cp -r host/lauma host/<hostname>
+nixos-generate-config --show-hardware-config > host/<hostname>/hardware-config.nix
 ```
 
 then, backup existing nixos config and link in this config
@@ -28,7 +31,7 @@ ln -s ~/dotfiles /etc/nixos
 finally, rebuild the system:
 
 ```sh
-sudo nixos-rebuild switch --flake /etc/nixos#lauma
+sudo nixos-rebuild switch --flake /etc/nixos#<hostname>
 ```
 
 (you may need to restart for the hostname to be updated, after that you won't

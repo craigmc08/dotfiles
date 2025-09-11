@@ -17,30 +17,33 @@
 
   outputs = inputs@{ nixpkgs, home-manager, ... }:
     let
-      system = "x86_64-linux";
-      hostName = "lauma"; # Set this variable equal to your hostName
+      specialArgs = { inherit inputs; };
+      mkSystem = { system, hostName }:
+        nixpkgs.lib.nixosSystem {
+                modules = [
+                  {
+                    networking.hostName = hostName;
+                    nixpkgs.hostPlatform = system;
+                  }
+                  ./host/${hostName}/hardware-configuration.nix
+                  ./host/${hostName}/configuration.nix
+                  home-manager.nixosModules.home-manager
+                  {
+                    home-manager.useGlobalPkgs = true;
+                    home-manager.useUserPackages = true;
+                    home-manager.extraSpecialArgs = specialArgs;
+                    home-manager.users.craig = import ./host/${hostName}/home.nix;
+                  }
+                ];
+
+                specialArgs = specialArgs;
+              };
     in {
-      nixosConfigurations.${hostName} = nixpkgs.lib.nixosSystem {
-        modules = [
-          ./configuration.nix
-          # ./x11
-          ./niri
-
-          {
-            networking.hostName = hostName;
-            nixpkgs.hostPlatform = system;
-          }
-
-          home-manager.nixosModules.home-manager
-          {
-            home-manager.useGlobalPkgs = true;
-            home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = { inherit inputs; };
-            home-manager.users.craig = import ./home;
-          }
-        ];
-
-        specialArgs = { inherit inputs; };
+      nixosConfigurations = {
+        lauma = mkSystem {
+          system = "x86_64-linux";
+          hostName = "lauma";
+        };
       };
     };
 }
