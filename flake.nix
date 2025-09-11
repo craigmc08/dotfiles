@@ -2,6 +2,7 @@
   description = "A simple system flake using some Aux defaults";
 
   inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+  inputs.nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
   inputs.home-manager = {
     url = "github:nix-community/home-manager/release-25.05";
     inputs.nixpkgs.follows = "nixpkgs";
@@ -15,11 +16,12 @@
     inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, ... }:
+  outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager, ... }:
     let
-      specialArgs = { inherit inputs; };
       mkSystem = { system, hostName }:
-        nixpkgs.lib.nixosSystem {
+        let pkgsUnstable = import nixpkgs-unstable { inherit system; };
+            specialArgs = { inherit inputs; inherit pkgsUnstable; };
+        in nixpkgs.lib.nixosSystem {
           modules = [
             {
               networking.hostName = hostName;

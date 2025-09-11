@@ -1,5 +1,5 @@
-{ config, pkgs, ... }:
+{ config, pkgsUnstable, pkgs, ... }:
 
 {
-  environment.systemPackages = [ pkgs.wineWow64Packages.full ];
+  environment.systemPackages = [ pkgsUnstable.wineWow64Packages.stagingFull pkgsUnstable.winetricks ];
 }
