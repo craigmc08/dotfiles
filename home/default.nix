@@ -93,5 +93,24 @@
       };
       ignores = [ ".env" "__scripts" ];
     };
+    programs.jujutsu = {
+      enable = true;
+      settings = {
+        ui = {
+          default-command = ["log"];
+          editor = "hx";
+        };
+        user = {
+          name = "Craig McIlwrath";
+          email = "craigmc08@gmail.com";
+        };
+      };
+    };
+
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
+      enableZshIntegration = true;
+    };
   };
 }
