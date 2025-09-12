@@ -19,8 +19,12 @@
   outputs = inputs@{ nixpkgs, nixpkgs-unstable, home-manager, ... }:
     let
       mkSystem = { system, hostName }:
-        let pkgsUnstable = import nixpkgs-unstable { inherit system; };
-            specialArgs = { inherit inputs; inherit pkgsUnstable; };
+        let
+          pkgsUnstable = import nixpkgs-unstable { inherit system; };
+          specialArgs = {
+            inherit inputs;
+            inherit pkgsUnstable;
+          };
         in nixpkgs.lib.nixosSystem {
           modules = [
             {
