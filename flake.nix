@@ -50,6 +50,10 @@
           system = "x86_64-linux";
           hostName = "lauma";
         };
+        clorinde = mkSystem {
+          system = "x86_64-linux";
+          hostName = "clorinde";
+        };
       };
     };
 }

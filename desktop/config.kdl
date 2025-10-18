@@ -38,7 +38,13 @@ output "DP-3" {
     position x=1920 y=0
 }
 
+layer-rule {
+    match namespace="^wallpaper$"
+    place-within-backdrop true
+}
+
 layout {
+    background-color "transparent"
     gaps 4
 
     center-focused-column "never"

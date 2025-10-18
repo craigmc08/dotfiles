@@ -6,6 +6,8 @@
     pkgs.xwayland-satellite
     pkgs.python314 # required by waybar custom modules
     pkgs.pavucontrol # used by volume waybar module
+    pkgs.swaybg
+    pkgs.waypaper # Wallpaper settings GUI
   ];
 
   xdg.configFile."niri/config.kdl".source =
