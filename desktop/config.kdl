@@ -38,13 +38,20 @@ output "DP-3" {
     position x=1920 y=0
 }
 
+// Convince electron apps to run in Wayland.
+environment {
+    ELECTRON_OZONE_PLATFORM_HINT "auto"
+}
+
+// Puts swaybg in background so it doesn't move when switching workspaces.
 layer-rule {
     match namespace="^wallpaper$"
     place-within-backdrop true
 }
 
 layout {
-    background-color "transparent"
+    background-color "transparent" // To show swaybg in backdrop layer
+
     gaps 4
 
     center-focused-column "never"
@@ -74,6 +81,8 @@ layout {
     }
 }
 
+screenshot-path null
+
 prefer-no-csd
 
 // This line starts waybar, a commonly used bar for Wayland compositors.
@@ -83,12 +92,6 @@ hotkey-overlay {
     // Uncomment this line to disable the "Important Hotkeys" pop-up at startup.
     // skip-at-startup
 }
-
-// You can change the path where screenshots are saved.
-// A ~ at the front will be expanded to the home directory.
-// The path is formatted with strftime(3) to give you the screenshot date and time.
-screenshot-path "~/Pictures/Screenshots/Screenshot from %Y-%m-%d %H-%M-%S.png"
-
 
 // Animation settings.
 // The wiki explains how to configure individual animations:
@@ -433,4 +436,6 @@ binds {
     // Powers off the monitors. To turn them back on, do any input like
     // moving the mouse or pressing any other key.
     // Mod+Shift+P { power-off-monitors; }
+
+    Mod+Shift+S { screenshot show-pointer=false; }
 }
