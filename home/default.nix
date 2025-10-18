@@ -67,6 +67,8 @@
         t() {
           pushd $(mktemp -d "/tmp/$1.XXXX")
         }
+
+        source <(COMPLETE=zsh jj)
       '';
       history.size = 1000000;
     };
