@@ -70,8 +70,35 @@
   users.users.craig = {
     isNormalUser = true;
     description = "craig";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel" "realtime" ];
   };
+
+  # "realtime" user group, increases game performance or something. From
+  # https://discourse.nixos.org/t/how-to-allow-wine-to-change-the-nice/34126/2
+  users.groups.realtime = { };
+  services.udev.extraRules = ''
+    KERNEL=="cpu_dma_latency", GROUP="realtime"
+  '';
+  security.pam.loginLimits = [
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "rtprio";
+      value = 98;
+    }
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "memlock";
+      value = "unlimited";
+    }
+    {
+      domain = "@realtime";
+      type = "-";
+      item = "nice";
+      value = -11;
+    }
+  ];
 
   programs.steam = {
     enable = true;

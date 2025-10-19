@@ -10,6 +10,7 @@ input {
     keyboard {
         xkb {
             layout "us(workman)"
+            // layout "us"
             options "caps:escape"
         }
     }
