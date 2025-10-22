@@ -38,7 +38,7 @@
       pkgs.nil # Nix language server
       pkgs.taplo # TOML language server
 
-      pkgs.discord
+      pkgs.vesktop # Discord, has working screenshare
     ];
 
     programs.zsh = {
