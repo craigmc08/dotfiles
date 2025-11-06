@@ -20,7 +20,7 @@
     let
       mkSystem = { system, hostName }:
         let
-          pkgsUnstable = import nixpkgs-unstable { inherit system; };
+          pkgsUnstable = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
           specialArgs = {
             inherit inputs;
             inherit pkgsUnstable;
