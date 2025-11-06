@@ -64,6 +64,34 @@
     # use the example session manager (no others are packaged yet so this is enabled by default,
     # no need to redefine it in your config for now)
     #media-session.enable = true;
+
+    extraConfig.pipewire."92-config" = {
+      "context.properties" = {
+        "default.clock.rate" = 48000;
+        "default.clock.allowed-rates" = [ 48000 ];
+        "default.clock.quantum" = 800;
+        "default.clock.min-quantum" = 512;
+        "default.clock.max-quantum" = 1024;
+      };
+    };
+    extraConfig.pipewire-pulse."92-low-latency" = {
+      context.modules = [
+        {
+          name = "libpipwire-module-context-pulse";
+          args = {
+            pulse.min.req = "512/48000";
+            pulse.default.req = "800/48000";
+            pulse.max.req = "1024/48000";
+            pulse.min.quantum = "512/48000";
+            pulse.max.quantum = "1024/48000";
+          };
+        }
+      ];
+      stream.properties = {
+        node.latency = "800/48000";
+        resample.quality = 1;
+      };
+    };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

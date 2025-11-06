@@ -24,8 +24,9 @@
       pkgs.ripgrep
       pkgs.ffmpeg
 
-      # configuration tools
+      # system tools
       pkgs.overskride # bluetooth manager
+      pkgs.digikam # image manager
 
       # system management
       pkgs.htop
@@ -41,6 +42,9 @@
       pkgs.vesktop # Discord, has working screenshare
     ];
 
+    home.sessionPath = [
+      "${config.dotfiles}/home/scripts/"
+    ];
     programs.zsh = {
       enable = true;
       enableCompletion = true;

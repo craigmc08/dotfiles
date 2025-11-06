@@ -128,7 +128,9 @@
         "tooltip-format": "{ifname} via {gwaddr} ",
         "format-linked": "",
         "format-disconnected": "⚠",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}"
+        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        // Toggle interface eno1 on click
+        "on-click": "nmcli d $(if (nmcli d status | grep eno1 | grep disconnected > /dev/null); then echo connect; else echo disconnect; fi) eno1"
     },
     "pulseaudio": {
         // "scroll-step": 1, // %, can be a float
