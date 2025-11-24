@@ -1,4 +1,4 @@
-{ config, pkgs, options, lib, ... }:
+{ config, pkgs, pkgsUnstable, options, lib, ... }:
 
 {
   options = {
@@ -100,6 +100,7 @@
       ignores = [ ".env" "__scripts" ];
     };
     programs.jujutsu = {
+      package = pkgsUnstable.jujutsu;
       enable = true;
       settings = {
         ui = {
