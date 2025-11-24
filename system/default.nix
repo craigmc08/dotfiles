@@ -133,6 +133,10 @@
     remotePlay.openFirewall = true;
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
+    protontricks.enable = true;
+
+    # Potentially needed for running protontricks, I'm not sure...
+    # extraPackages = [ pkgs.freetype ];
   };
 
   # Allow unfree packages
@@ -144,8 +148,6 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     git
-    pkgsUnstable.protontricks
-    #  wget
   ];
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;
