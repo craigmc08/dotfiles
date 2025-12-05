@@ -23,6 +23,7 @@
       pkgs.zip
       pkgs.ripgrep
       pkgs.ffmpeg
+      pkgs.magic-wormhole
 
       # system tools
       pkgs.overskride # bluetooth manager

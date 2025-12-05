@@ -134,6 +134,10 @@
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
     protontricks.enable = true;
+    extraCompatPackages = [
+      # TODO: figure out how to install specific versions of proton-ge this way...
+      # pkgs.proton-ge-bin
+    ];
 
     # Potentially needed for running protontricks, I'm not sure...
     # extraPackages = [ pkgs.freetype ];
@@ -148,6 +152,7 @@
   environment.systemPackages = with pkgs; [
     vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     git
+    protonup-qt
   ];
   programs.zsh.enable = true;
   users.defaultUserShell = pkgs.zsh;

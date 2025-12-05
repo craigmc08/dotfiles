@@ -1,0 +1,94 @@
+# syntax highlighting
+comment = { fg = "comment", modifiers = ["bold"] }
+string = { fg = "string" }
+
+"diff" = "fg"
+"diff.minus" = { fg = "lemon-zest" }
+"diff.plus" = { fg = "sky-blue" }
+"diff.delta" = { fg = "walnut-brown" }
+
+"markup.heading" = { fg = "fg-bright", modifiers = ["bold"] }
+"markup.bold" = { modifiers = ["bold"] }
+"markup.italic" = { modifiers = ["italic"] }
+"markup.link" = { fg = "crystal-blue", underline = { style = "line" } }
+
+# interface
+"ui.background" = { bg = "bg" } # workspace background
+"ui.background.separator" = { fg = "fg" }
+"ui.linenr" = { fg = "fg-dim" } # line numbers
+"ui.linenr.selected" = { fg = "fg" } # line number for selected lines
+
+"ui.statusline" = { fg = "fg", bg = "panel-accent" } # focused
+"ui.statusline.inactive" = { fg = "fg-dim", bg = "panel-dim" } # unfocused
+"ui.statusline.normal" = { fg = "bg", bg = "sky-blue" }
+"ui.statusline.insert" = { fg = "bg", bg = "leafy-green" }
+"ui.statusline.select" = { fg = "bg", bg = "blaze-orange" }
+"ui.statusline.seperator" = { fg = "fg" }
+
+"ui.virtual.ruler" = { bg = "bg-mid" }
+"ui.virtual.whitespace" = { fg = "fg-dimmer" }
+"ui.virtual.indent-guide" = { fg = "fg-dimmer" }
+"ui.virtual.inlay-hint" = { fg = "fg-dimmer" }
+"ui.virtual.wrap" = { fg = "fg-dimmer" }
+"ui.virtual.jump-label" = { modifiers = ["reversed"] }
+
+"ui.selection" = { bg = "bg-bright" }
+"ui.selection.primary" = { bg = "bg-brighter" }
+"ui.cursor.match" = { fg = "bg-dim", bg = "deep-purple" } # matching bracket
+"ui.cursor.primary" = { fg = "bg-dim", bg = "sky-blue" }
+"ui.cursor.primary.normal" = { fg = "bg-dim", bg = "sky-blue" }
+"ui.cursor.primary.insert" = { fg = "bg-dim", bg = "leafy-green" }
+"ui.cursor.primary.select" = { fg = "bg-dim", bg = "blaze-orange" }
+"ui.cursorline.primary" = { bg = "bg-dim" }
+
+# menus and popups
+"ui.popup" = { fg = "fg", bg = "panel" } # popups like space + k
+"ui.popup.info" = { fg = "fg", bg = "panel" } # popups like space
+"ui.window" = { fg = "fg-dim" } # line separating/around windows
+"ui.help" = { fg = "fg", bg = "panel" }
+"ui.text" = { fg = "fg" } # default text style
+"ui.text.focus" = { fg = "dreamy-blue" } # currently selected thing in pickers (like space + f)
+"ui.text.inactive" = { fg = "fg-dim" } # default inactive text, like suggestions
+"ui.menu" = { fg = "fg", bg = "panel" } # command window, etc.
+"ui.menu.selected" = { fg = "fg", bg = "sky-blue" } # selected commands, etc.
+"ui.highlight" = { underline = { color = "sky-blue", style = "line" } } # highlighted text in pickers, like search results
+
+# diagnostics
+error = "ruby-glow"
+warning = "lemon-zest"
+info = "sky-blue"
+hint = "leafy-green"
+"diagnostic" = { modifiers = ["reversed"] }
+"diagnostic.error" = { underline = { color = "ruby-glow", style = "line" } }
+"diagnostic.warning" = { underline = { color = "lemon-zest", style = "line" } }
+"diagnostic.info" = { underline = { color = "sky-blue", style = "line" } }
+"diagnostic.hint" = { underline = { color = "leafy-green", style = "line" } }
+
+[palette]
+fg-bright = "#f3f4f6"
+fg = "#d9dbdd"
+fg-dim = "#838a97"
+fg-dimmer = "#535a67"
+
+bg-brighter = "#3d6586"
+bg-bright = "#2d4566"
+bg-mid = "#1b2535"
+bg = "#0a121d"
+bg-dim = "#01050a"
+
+panel-accent = "#1f2937"
+panel = "#1d2536"
+panel-dim = "#01050a"
+
+ruby-glow = "#fa7970"
+blaze-orange = "#ff9000"
+lemon-zest = "#ffba00"
+leafy-green = "#81be83"
+crystal-blue = "#99c7ff"
+dreamy-blue = "#6eb0ff"
+sky-blue = "#45b1e8"
+deep-purple = "#4c1785"
+walnut-brown = "#987654"
+
+comment = "#81de83"
+string = "#dbcb40"

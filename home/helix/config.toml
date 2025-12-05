@@ -1,4 +1,4 @@
-theme = "bogster"
+theme = "nightsky"
 
 [editor]
 cursorline = true
@@ -58,10 +58,44 @@ cursor-line = "warning"
 'n' = 'move_line_down'
 'k' = 'goto_last_line'
 'h' = 'goto_type_definition'
+'j' = 'goto_next_buffer'
+
+[keys.normal."C-w"]
+'y' = 'jump_view_left'
+'n' = 'jump_view_down'
+'e' = 'jump_view_up'
+'o' = 'jump_view_right'
+'Y' = 'swap_view_left'
+'N' = 'swap_view_down'
+'E' = 'swap_view_up'
+'O' = 'swap_view_right'
+'l' = 'wonly'
+
+[keys.normal."z"]
+'e' = 'scroll_up'
+'n' = 'scroll_down'
+'j' = 'search_next'
+
+[keys.normal."Z"]
+'e' = 'scroll_up'
+'n' = 'scroll_down'
+'j' = 'search_next'
+
 
 [keys.normal."space"]
 'h' = 'yank_to_clipboard'
 'H' = 'yank_to_primary_clipboard'
+
+[keys.normal."space"."w"]
+'y' = 'jump_view_left'
+'n' = 'jump_view_down'
+'e' = 'jump_view_up'
+'o' = 'jump_view_right'
+'Y' = 'swap_view_left'
+'N' = 'swap_view_down'
+'E' = 'swap_view_up'
+'O' = 'swap_view_right'
+'l' = 'wonly'
 
 [keys.select]
 'y' = 'extend_char_left'
