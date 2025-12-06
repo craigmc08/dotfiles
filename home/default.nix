@@ -11,7 +11,7 @@
     };
   };
 
-  imports = [ ./helix ./alacritty ./spicetify ./firefox ./games ];
+  imports = [ ./helix ./alacritty ./spicetify ./firefox ./games ./starship ];
 
   config = {
     home.stateVersion = "25.05";
@@ -78,10 +78,6 @@
       history.size = 1000000;
     };
     programs.autojump = {
-      enable = true;
-      enableZshIntegration = true;
-    };
-    programs.starship = {
       enable = true;
       enableZshIntegration = true;
     };
