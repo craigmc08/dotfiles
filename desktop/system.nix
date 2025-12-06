@@ -8,7 +8,7 @@
   xdg.portal.enable = true;
   environment.pathsToLink = [ "/share/xdg-desktop-portal" "/share/applications" ];
 
-  services.xserver.displayManager.gdm.enable = true;
+  services.displayManager.gdm.enable = true;
   services.playerctld.enable = true;
 
   programs.xfconf.enable = true; # save configuration for XFCE apps

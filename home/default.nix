@@ -92,9 +92,9 @@
 
     programs.git = {
       enable = true;
-      userName = "Craig McIlwath";
-      userEmail = "craigmc08@gmail.com";
-      extraConfig = {
+      settings = {
+        user.name = "Craig McIlwath";
+        user.email = "craigmc08@gmail.com";
         init.defaultBranch = "main";
         pull.rebase = true;
       };

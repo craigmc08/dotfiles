@@ -1,10 +1,10 @@
 {
   description = "A simple system flake using some Aux defaults";
 
-  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-25.05";
+  inputs.nixpkgs.url = "github:nixos/nixpkgs/nixos-25.11";
   inputs.nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
   inputs.home-manager = {
-    url = "github:nix-community/home-manager/release-25.05";
+    url = "github:nix-community/home-manager/release-25.11";
     inputs.nixpkgs.follows = "nixpkgs";
   };
   inputs.spicetify-nix = {
